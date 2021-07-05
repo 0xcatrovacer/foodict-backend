@@ -6,7 +6,7 @@ const router = new express.Router()
 
 
 // Create User
-router.post('/createaccount', async (req, res) => {
+router.post('/user/createaccount', async (req, res) => {
     const user = new User(req.body)
 
     try{
@@ -17,3 +17,5 @@ router.post('/createaccount', async (req, res) => {
         res.status(500).send(e)
     }
 })
+
+module.exports = router
