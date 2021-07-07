@@ -1,18 +1,17 @@
-const express = require('express')
+const express = require("express");
 
-const userRouter = require('./routers/user-routers')
+const userRouter = require("./routers/user-routers");
 
-require('./db/mongoose')
+require("./db/mongoose");
 
-const app = express()
+const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
+app.use(userRouter);
 
-app.use(userRouter)
-
-const port = process.env.PORT || 8000
+const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
-    console.log(`Backend is running on port ${port}`)
-})
+  console.log(`Backend is running on port ${port}`);
+});
