@@ -43,6 +43,11 @@ router.post("/user/login", async (req, res) => {
   }
 });
 
+//Get User Details
+router.get("users/details", auth, (req, res) => {
+  res.send(req.user);
+});
+
 //Logout User
 router.post("/user/logout", auth, async (req, res) => {
   try {
