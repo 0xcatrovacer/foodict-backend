@@ -44,7 +44,7 @@ router.post("/user/login", async (req, res) => {
 });
 
 //Get User Details
-router.get("users/details", auth, (req, res) => {
+router.get("/user/details", auth, (req, res) => {
   res.send(req.user);
 });
 
@@ -56,6 +56,19 @@ router.post("/user/logout", auth, async (req, res) => {
     });
     await req.user.save();
     res.send({ message: "Logged Out" });
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
+
+//Delete User
+router.delete("/user/deleteaccount", auth, async (req, res) => {
+  try {
+    req.user.remove();
+    res.send({
+      message:
+        "Your account was deleted along with all your data. Sorry to see you go!",
+    });
   } catch (e) {
     res.status(500).send(e);
   }
