@@ -2,6 +2,7 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 
 const User = require("../models/user");
+const auth = require("../middlewares/auth");
 
 const router = new express.Router();
 
@@ -39,6 +40,19 @@ router.post("/user/login", async (req, res) => {
     res.status(200).send({ user, token });
   } catch (e) {
     res.status(500).send("Unable to Login");
+  }
+});
+
+//Logout User
+router.post("/user/logout", auth, async (req, res) => {
+  try {
+    req.user.tokens = req.user.tokens.filter((token) => {
+      return token.token != req.token;
+    });
+    await req.user.save();
+    res.send({ message: "Logged Out" });
+  } catch (e) {
+    res.status(500).send(e);
   }
 });
 
