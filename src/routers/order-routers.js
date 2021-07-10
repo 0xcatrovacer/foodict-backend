@@ -7,7 +7,10 @@ const router = new express.Router();
 
 //New Order
 router.post("/order/neworder", auth, async (req, res) => {
-    const order = new Order(req.body);
+    const order = new Order({
+        ...req.body,
+        owner: req.user._id,
+    });
     try {
         await order.save();
         res.status(200).send(order);

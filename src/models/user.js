@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
+const Order = require("./order");
+
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -37,6 +39,12 @@ const userSchema = new mongoose.Schema({
             },
         },
     ],
+});
+
+userSchema.virtual("orders", {
+    ref: "Order",
+    localField: "_id",
+    foreignField: "owner",
 });
 
 userSchema.methods.toJSON = function () {
