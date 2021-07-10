@@ -7,9 +7,9 @@ const router = new express.Router();
 
 //Enter new item
 router.post("/menuitem/new", async (req, res) => {
-    const menuitem = new MenuItem(req.body);
+    const menuItem = new MenuItem(req.body);
     try {
-        await menuitem.save();
+        await menuItem.save();
         res.status(201).send(menuItem);
     } catch (e) {
         res.status(500).send(e);
