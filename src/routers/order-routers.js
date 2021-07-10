@@ -19,4 +19,18 @@ router.post("/order/neworder", auth, async (req, res) => {
     }
 });
 
+//Get Past Orders
+router.get("/order/pastorders", auth, async (req, res) => {
+    try {
+        await req.user
+            .populate({
+                path: "orders",
+            })
+            .execPopulate();
+        res.status(200).send(req.user.orders);
+    } catch (e) {
+        res.status(500).send(e);
+    }
+});
+
 module.exports = router;
