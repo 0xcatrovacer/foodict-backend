@@ -21,8 +21,11 @@ const userSchema = new mongoose.Schema({
     },
     addresses: [
         {
-            address: {
-                type: String,
+            type: String,
+            properties: {
+                address: {
+                    trim: true,
+                },
             },
         },
     ],
