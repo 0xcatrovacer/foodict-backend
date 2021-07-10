@@ -61,13 +61,25 @@ router.post("/user/logout", auth, async (req, res) => {
     }
 });
 
-//Add a new Address
+//Add a New Address
 router.patch("/user/newaddress", auth, async (req, res) => {
     try {
         const newAddress = req.body.address;
         await req.user.addresses.push(newAddress);
         await req.user.save();
         console.log(req.user.addresses);
+        res.status(200).send(req.user.addresses);
+    } catch (e) {
+        res.status(500).send(e);
+    }
+});
+
+//Delete an Address
+router.delete("/user/deleteaddress", auth, async (req, res) => {
+    try {
+        const delAddress = req.body.address;
+        await req.user.addresses.remove(delAddress);
+        await req.user.save();
         res.status(200).send(req.user.addresses);
     } catch (e) {
         res.status(500).send(e);
