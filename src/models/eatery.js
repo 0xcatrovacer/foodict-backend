@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const { Decimal128 } = require("bson");
 
+const MenuItem = require("./menuItem");
+
 const eaterySchema = new mongoose.Schema({
   eatery_name: {
     type: String,
@@ -26,6 +28,12 @@ const eaterySchema = new mongoose.Schema({
   avg_rating: {
     type: Number,
   },
+});
+
+eaterySchema.virtual("menuItems", {
+  ref: "MenuItem",
+  localField: "_id",
+  foreignField: "restaurant",
 });
 
 const Eatery = mongoose.model("Eatery", eaterySchema);

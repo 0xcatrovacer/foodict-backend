@@ -31,6 +31,11 @@ const menuItemSchema = new mongoose.Schema({
     trim: true,
     required: true,
   },
+  restaurant: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "Eatery",
+  },
 });
 
 const MenuItem = mongoose.model("MenuItem", menuItemSchema);
