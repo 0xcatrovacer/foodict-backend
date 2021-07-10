@@ -15,3 +15,5 @@ router.post("/eatery/create", async (req, res) => {
     res.status(500).send(e);
   }
 });
+
+module.exports = router;
