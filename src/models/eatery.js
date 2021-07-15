@@ -14,6 +14,9 @@ const eaterySchema = new mongoose.Schema({
         trim: true,
         required: true,
     },
+    eatery_desc: {
+        type: String,
+    },
     latitude: {
         type: Decimal128,
     },
@@ -21,6 +24,11 @@ const eaterySchema = new mongoose.Schema({
         type: Decimal128,
     },
     eatery_type: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    eatery_imageurl: {
         type: String,
         required: true,
         trim: true,
