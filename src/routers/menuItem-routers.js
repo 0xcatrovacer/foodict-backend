@@ -16,7 +16,7 @@ router.post("/menuitem/new", async (req, res) => {
     }
 });
 
-router.get("/menuitem/details", eaterySelect, async (req, res) => {
+router.post("/menuitem/details", eaterySelect, async (req, res) => {
     try {
         await req.eatery
             .populate({
