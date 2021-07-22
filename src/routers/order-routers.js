@@ -12,6 +12,7 @@ router.post("/order/neworder", auth, async (req, res) => {
         owner: req.user._id,
     });
     try {
+        console.log(req);
         await order.save();
         res.status(200).send(order);
     } catch (e) {
