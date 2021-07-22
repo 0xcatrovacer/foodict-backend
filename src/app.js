@@ -4,6 +4,7 @@ const userRouter = require("./routers/user-routers");
 const eateryRouter = require("./routers/eatery-routers");
 const menuItemRouter = require("./routers/menuItem-routers");
 const orderRouter = require("./routers/order-routers");
+const paymentRouter = require("./routers/payment-routers");
 
 require("./db/mongoose");
 
@@ -26,6 +27,7 @@ app.use(userRouter);
 app.use(eateryRouter);
 app.use(menuItemRouter);
 app.use(orderRouter);
+app.use(paymentRouter);
 
 const port = process.env.PORT || 8000;
 
