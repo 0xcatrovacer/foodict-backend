@@ -29,7 +29,7 @@ app.use(menuItemRouter);
 app.use(orderRouter);
 app.use(paymentRouter);
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 1337;
 
 app.listen(port, () => {
     console.log(`Backend is running on port ${port}`);
