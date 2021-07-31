@@ -15,7 +15,16 @@ router.post("/user/createaccount", async (req, res) => {
         const token = await user.generateAuthToken();
         res.status(201).send({ user, token });
     } catch (e) {
-        res.status(500).send(e);
+        console.log(e);
+        if (user.password.length < 8) {
+            res.status(500).send({
+                message: "Password has to be minimum 8 characters",
+            });
+        } else if (e.keyPattern.username === 1) {
+            res.status(500).send({ message: "Username already taken!" });
+        } else {
+            res.status(500).send({ message: "Something went wrong" });
+        }
     }
 });
 
@@ -39,7 +48,7 @@ router.post("/user/login", async (req, res) => {
         const token = await user.generateAuthToken();
         res.status(200).send({ user, token });
     } catch (e) {
-        res.status(500).send("Unable to Login");
+        res.status(500).send({ message: "Unable to login" });
     }
 });
 
