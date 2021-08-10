@@ -15,4 +15,13 @@ router.post("/eatery/create", async (req, res) => {
     }
 });
 
+router.get("/eatery/get", async (req, res) => {
+    const eateries = await Eatery.find();
+    try {
+        res.status(200).send(eateries);
+    } catch (e) {
+        res.status(500).send(e);
+    }
+});
+
 module.exports = router;
