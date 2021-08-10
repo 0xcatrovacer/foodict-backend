@@ -26,8 +26,8 @@ Enter the env variables in the `dev.env` file
 ```
 FOODICT_MONGO_URL="<database url>"
 FOODICT_JWT_SECRET="<your JWT secret>"
-FOODICT_RZPAY_KEYID="<key id from Razorpay APIs>"
-FOODICT_RZPAY_KEYSECRET="<keySecret from Razorpay APIs>"
+FOODICT_RZPAY_KEYID="<key id from Razorpay API keys>"
+FOODICT_RZPAY_KEYSECRET="<keySecret from Razorpay API keys>"
 ```
 
 Start the app:
